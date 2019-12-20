@@ -14,7 +14,26 @@ function findBy(username) {
 }
 
 function register(user) {
+    
     return db('users')
-    .insert(user)
-    // .then(ret => ret[0])
+    .where({username: user.username})
+    .first()
+    .then(returnedUser => {
+        if(returnedUser) {
+            return 'username_exists'
+        } else {
+            return db('users')
+            .where({email: user.email})
+            .first()
+            .then(secondReturn => {
+                if(secondReturn) {
+                    
+                    return 'email_exists'
+                } else {
+                    return db('users')
+                    .insert(user)
+                }
+            })
+        }
+    })
 }
