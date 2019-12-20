@@ -16,7 +16,7 @@ router.post('/register', async (req, res) => {
     } else {
         try {
             const register = await helpers.register(req.body)
-            res.status(201).json(register)
+            res.status(201).json('Success')
         } catch {
             res.status(500).json({ message: 'Something went wrong with the server' })
         }
