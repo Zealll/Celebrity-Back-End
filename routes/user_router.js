@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const jsonWT = require('jsonwebtoken')
 
-const db = require('../data/dbConfig.js')
 const helpers = require('../helpers/user_helpers.js')
 
 router.get('/all', async (req, res) => {
