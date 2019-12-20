@@ -14,7 +14,6 @@ function findBy(username) {
 }
 
 function register(user) {
-    
     return db('users')
     .where({username: user.username})
     .first()
@@ -27,7 +26,6 @@ function register(user) {
             .first()
             .then(secondReturn => {
                 if(secondReturn) {
-                    
                     return 'email_exists'
                 } else {
                     return db('users')

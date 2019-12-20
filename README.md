@@ -37,30 +37,31 @@ API DOCUMENTATIONS:
 ==================== LOGIN && REGISTER ENDPOINTS START HERE =======================
 =========================================================================
 
-============ UNRESTRICTED ENDPOINTS ============
+<h1>[X] NON-Protected Routes</h1>
 
 
-### **Login a user**
+<h1>Login a user</h1>
+
 *method url*: `/api/auth/login`
 
 *http method*: **[POST]**
 
-#### Body
+- Body
 
 | name       | type   | required | description              |
-| ---------- | ------ | -------- | ------------------------ |
-| `username` | String | Yes      | must be registered email |
-| `password` | String | Yes      |                          |
+| ---------- | ------ | :------: | ------------------------ |
+| `username` | String |   Yes    | must be registered email |
+| `password` | String |   Yes    |                          |
 
 
-#### Example
+- Example
 ```
   {
     email: 'elan@gmail.com',
     password: 'pass',
   }
   ```
-#### Response
+- Response
 ##### 200 (ok)
 
 ```
@@ -87,31 +88,32 @@ API DOCUMENTATIONS:
 
 
 
-### **Register a user**
+<h1>Register a user</h1>
+
 *method url*: `/api/auth/register`
 
 *http method*: **[POST]**
 
-#### Body
+- Body
 
 | name        | type   | required | description    |
-| ----------- | ------ | -------- | -------------- |
-| `firstName` | String | Yes      |                |
-| `lastName`  | String | Yes      |                |
-| `email`     | String | Yes      | must be unique |
-| `username`  | String | Yes      | must be unique |
-| `password`  | String | Yes      |                |
+| ----------- | ------ | :------: | -------------- |
+| `firstName` | String |   Yes    |                |
+| `lastName`  | String |   Yes    |                |
+| `email`     | String |   Yes    | must be unique |
+| `username`  | String |   Yes    | must be unique |
+| `password`  | String |   Yes    |                |
 
 
 
-#### Example
+- Example
 ```
   {
     username: 'johndoe',
     password: 'pass',
   }
   ```
-#### Response
+- Response
 ##### 201 (Created)
 
 ```
@@ -149,5 +151,13 @@ API DOCUMENTATIONS:
  }
  ```
 
+
+<h1>10 Random Celebrities</h1>
+
+*method url*: `/api/celebs/game`
+
+*http method*: **[GET]**
+
+- Body: Not needed!
 
  =========================== USERS ENDPOINTS START HERE ===========================
