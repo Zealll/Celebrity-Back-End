@@ -36,6 +36,10 @@ API DOCUMENTATIONS:
 
 ==================== LOGIN && REGISTER ENDPOINTS START HERE =======================
 =========================================================================
+
+============ UNRESTRICTED ENDPOINTS ============
+
+
 ### **Login a user**
 *method url*: `/api/auth/login`
 
@@ -78,6 +82,70 @@ API DOCUMENTATIONS:
   ```
  { 
  message: "Please fill out the required fields!"
+ }
+ ```
+
+
+
+### **Register a user**
+*method url*: `/api/auth/register`
+
+*http method*: **[POST]**
+
+#### Body
+
+| name        | type   | required | description    |
+| ----------- | ------ | -------- | -------------- |
+| `firstName` | String | Yes      |                |
+| `lastName`  | String | Yes      |                |
+| `email`     | String | Yes      | must be unique |
+| `username`  | String | Yes      | must be unique |
+| `password`  | String | Yes      |                |
+
+
+
+#### Example
+```
+  {
+    username: 'johndoe',
+    password: 'pass',
+  }
+  ```
+#### Response
+##### 201 (Created)
+
+```
+{
+    message: 'Successfully Registered!',
+}
+```
+##### 400 (Bad Request)
+###### Example response
+  ```
+ { 
+ message: "Please fill out all the required fields!
+ }
+ ```
+
+##### 400 (Bad Request)
+###### Example response
+  ```
+ { 
+ message: "This username already exists"
+ }
+ ```
+##### 400 (Bad Request)
+###### Example response
+  ```
+ { 
+ message: "This email already exists!"
+ }
+ ```
+##### 500 (Internal Server Error)
+###### Example response
+  ```
+ { 
+ message: "Something went wrong with the server!"
  }
  ```
 

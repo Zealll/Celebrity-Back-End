@@ -16,7 +16,14 @@ router.post('/register', async (req, res) => {
     } else {
         try {
             const register = await helpers.register(req.body)
-            res.status(201).json('Success')
+            if(register === 'username_exists') {
+                res.status(400).json({message: 'This username already exists'})
+            } else if(register === 'email_exists') {
+                res.status(400).json({message: 'This email already exists!'})
+            } else {
+                res.status(201).json(register)
+            }
+            
         } catch {
             res.status(500).json({ message: 'Something went wrong with the server' })
         }
