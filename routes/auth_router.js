@@ -7,6 +7,24 @@ const { generateToken } = require('./middleware.js')
 
 
 
+router.post('/register', async (req, res) => {
+    const {firstName, lastName, username, password, email} = req.body
+
+    if(!firstName || !lastName || !username || !password || !email || firstName.length === 0 || lastName.length === 0 || username.length === 0 || password.length === 0 || email.length === 0) {
+        res.status(400).json({ message: 'Please fill out all the required fields!' })
+    } else {
+        req.body.password = bcrypt.hashSync(req.body.password, 4)
+        try {
+            const register = await helpers.register(req.body)
+            res.status(201).json(register)
+        } catch {
+            res.status(500).json({ message: 'Something went wrong with the server' })
+        }
+    }
+})
+
+
+//Login User
 router.post('/login', async (req, res) => {
     let { username, password } = req.body
     
