@@ -16,4 +16,5 @@ function findBy(username) {
 function register(user) {
     return db('users')
     .insert(user)
+    .then(ret => ret[0])
 }
